@@ -1,0 +1,75 @@
+# import Query.*, Mutation.* from "./schema/ApiKey/schema.graphql"
+# import Query.* from "./schema/Asset/schema.graphql"
+# import Query.* from "./schema/AssetHistory/schema.graphql"
+# import Query.* from "./schema/AssetHistory/schema.graphql"
+# import Query.* from "./schema/AssetMarket/schema.graphql"
+# import Subscription.* from "./schema/AveragePriceUpdates/schema.graphql"
+# import Query.*, Mutation.* from "./schema/Hodling/schema.graphql"
+# import Query.* from "./schema/Exchange/schema.graphql"
+# import Query.* from "./schema/ExchangeMarket/schema.graphql"
+# import Query.* from "./schema/MarketTotal/schema.graphql"
+# import Query.*, Mutation.* from "./schema/Portfolio/schema.graphql"
+# import Query.*, from "./schema/PortfolioHistory/schema.graphql"
+# import Query.* from "./schema/Rate/schema.graphql"
+# import Query.* from "./schema/RateCompare/schema.graphql"
+# import Query.*, Mutation.* from "./schema/SharedPortfolio/schema.graphql"
+# import Subscription.* from "./schema/Trade/schema.graphql"
+# import Query.*, Mutation.* from "./schema/Transaction/schema.graphql"
+# import Query.*, Mutation.* from "./schema/User/schema.graphql"
+
+"""
+The `Date` scalar type represents Epoch timestamps.
+"""
+scalar Date
+
+directive @cost(
+  complexity: Int
+  useMultipliers: Boolean
+  multipliers: [String!]
+) on FIELD_DEFINITION
+
+directive @rateLimit(
+  max: Int
+  window: String
+  message: String
+  identityArgs: [String]
+) on FIELD_DEFINITION
+
+interface Node {
+  "ID of the object."
+  id: ID!
+}
+
+"An edge in a connection."
+interface Edge {
+  "An opaque pointer to the object"
+  cursor: String!
+  "An object with an ID"
+  node: Node
+}
+
+"A connection type"
+interface Connection {
+  "A list of connection edges"
+  edges: [Edge]
+  "Information to aid in pagination"
+  pageInfo: PageInfo!
+}
+
+type PageInfo {
+  "When paginating forwards, are there more items?"
+  hasNextPage: Boolean!
+  "When paginating backwards, are there more items?"
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+enum SortDirection {
+  "Sort in ascending order"
+  ASC
+  "Sort in descending order"
+  DESC
+}

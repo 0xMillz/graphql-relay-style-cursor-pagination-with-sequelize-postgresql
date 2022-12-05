@@ -1,0 +1,11 @@
+{
+  "name": "graphql-cursor-connections-sequelize",
+  "version": "1.0.0",
+  "dependencies": {
+    "apollo-engine": "^1.1.2",
+    "graphql": "^16.6.0",
+    "graphql-relay": "^0.10.0",
+    "jest": "^29.4.3",
+    "js-base64": "^3.7.5"
+  }
+}
